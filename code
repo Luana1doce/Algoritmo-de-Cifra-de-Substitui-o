@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main(){
+   char senha[10]= "Palu@123";
+   printf("Crie sua senha\n");
+   scanf("%10s",senha);
+for(int i=0; senha[i] != '\0'; i++)
+{senha[i]=senha[i]+10;
+if( senha[i]> 126 )
+{senha[i]=32 + (senha[i]-127); } };
+printf("Senha Criptografada: %s\n",senha);
+return 0; }
