@@ -1,11 +1,32 @@
 #include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include <string.h>
 int main(){
-   char senha[10]= "Palu@123";
+   char senha[9]= "Palu@123";
    printf("Crie sua senha\n");
-   scanf("%10s",senha);
+   scanf("%9s",senha);
 for(int i=0; senha[i] != '\0'; i++)
 {senha[i]=senha[i]+10;
 if( senha[i]> 126 )
 {senha[i]=32 + (senha[i]-127); } };
-printf("Senha Criptografada: %s\n",senha);
+
+//segunda camada
+int camada1=30;
+char camada2[20];
+char resultado[40];
+srand(time(NULL));
+camada1=rand() %100;
+sprintf(camada2 , "%d" , camada1);
+for(int i=0; camada2[i] != '\0'; i++)
+{camada2[i]=camada2[i]+10;
+if( camada2[i]> 126 )
+{camada2[i]=32 + (camada2[i]-127); } };
+
+strcpy(resultado, senha);     
+strcat(resultado, camada2);
+printf("Senha Criptografada: %s\n",resultado);
+
+
 return 0; }
+
